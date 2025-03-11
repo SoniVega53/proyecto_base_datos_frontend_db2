@@ -1,0 +1,86 @@
+.container-login{
+  width:55rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  box-shadow: -34px 23px 23px -9px rgba(0,0,0,0.44);
+  -webkit-box-shadow: -34px 23px 23px -9px rgba(0,0,0,0.44);
+  -moz-box-shadow: -34px 23px 23px -9px rgba(0,0,0,0.44);
+
+}
+
+.svg-images svg{
+  margin: 1rem;
+}
+
+.svg-images{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card{
+  background: #bdc3c7;
+  padding: 2rem;
+  border-radius: 0rem 0.375rem 0.375rem 0rem;
+  border: 0 !important;
+}
+
+
+.card-title{
+  font-family: "Nerko One", cursive;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 1.8rem;
+  color: rgb(41, 39, 39);
+  margin-bottom: 1rem;
+}
+
+.card-body{
+  padding: 0;
+}
+
+.col{
+  padding: 0;
+}
+
+.background-div {
+  background-image: url('../../../assets/images/fondo_login.jfif');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  border-radius: 0.375rem 0rem 0rem 0.375rem;
+}
+
+.btn-link{
+  color: #2b2b2c;
+}
+
+/* Tamaño de texto para pantallas medianas (tabletas) */
+@media (max-width: 1024px) {
+  .container-login{
+    width: 70%;
+  }
+}
+
+/* Tamaño de texto para pantallas pequeñas (móviles) */
+@media (max-width: 768px) {
+  .container-login{
+    width: 60%;
+  }
+
+  .col-info{
+    display: none;
+  }
+}
+
+/* Tamaño de texto para pantallas extra pequeñas (móviles muy pequeños) */
+@media (max-width: 480px) {
+  .container-login{
+    width: 80%;
+  }
+
+
+}

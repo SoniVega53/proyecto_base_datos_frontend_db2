@@ -1,0 +1,32 @@
+.nav-link{
+    color: rgb(255, 255, 255);
+}
+
+.text-nav-title{
+    font-family: 'Lumanosimo', cursive;
+    margin: 0;
+    margin-left: 0.5rem;
+}
+
+.svg-icon{
+    color: aliceblue;
+    text-align: center;
+    align-items: center;
+}
+
+.dropstart .dropdown-menu[data-bs-popper] {
+    top: 90%;
+    right: 20%;
+    left: auto;
+    margin-top: 0;
+    margin-right: var(--bs-dropdown-spacer);
+}
+
+.svg-nav-icon{
+    width: 25px;
+    height: 25px;
+}
+
+.nav-item{
+    cursor: pointer;
+}

@@ -1,0 +1,114 @@
+<div class="container-login">
+  <div class="card">
+    <div class="card-img-top svg-images">
+      <div style="width: 9rem; height: 9rem">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+          <path
+            fill="#07204b"
+            d="M256 288c79.5 0 144-64.5 144-144S335.5 0 256 0 112 64.5 112 144s64.5 144 144 144zm128 32h-55.1c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16H128C57.3 320 0 377.3 0 448v16c0 26.5 21.5 48 48 48h416c26.5 0 48-21.5 48-48v-16c0-70.7-57.3-128-128-128z"
+          />
+        </svg>
+      </div>
+    </div>
+
+    <div class="card-body">
+      <h5 class="card-title text-center" style="text-transform: uppercase">
+        {{ userEntity.username }}
+      </h5>
+      <div class="container text-center inputs-container">
+        <ul class="list-group list-group-flush list_info">
+          <li class="list-group-item"><span>Nombre: </span> {{ userEntity.name }}</li>
+          <li class="list-group-item"><span>Apellido: </span> {{ userEntity.lastname }}</li>
+          <li class="list-group-item"><span>Email: </span> {{ userEntity.email }}</li>
+          <li class="list-group-item"><span>ROL: </span> {{ userEntity.rol }}</li>
+          <li class="list-group-item"><span>Usuario: </span>  {{ userEntity.username }}</li>
+        </ul>
+        <div class="ajustRight">
+          <a class="card-link"  data-bs-toggle="modal" data-bs-target="#updateChangePassword" (click)="clearDataModel()">Cambiar contraseña</a>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <div class="d-grid gap-2 col-6 mx-auto">
+              <button type="button" class="btn btn-primary mt-3"  data-bs-toggle="modal" data-bs-target="#updateChange" (click)="editarData()"> Editar</button>
+            </div>
+
+          </div>
+          <div class="col">
+            <div class="d-grid gap-2 col-6 mx-auto">
+              <button type="button" class="btn btn-danger mt-3" (click)="deleteUsuario()">Eliminar</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<div class="modal " tabindex="-1" id="updateChangePassword">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cambio Contraseña </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="input-group flex-nowrap input">
+          <input type="password" class="form-control" placeholder="Contraseña" aria-describedby="addon-wrapping"
+            [(ngModel)]="userRequest.password" (input)="onChangeValuesPassword()" />
+        </div>
+        <br>
+        <div class="input-group flex-nowrap input">
+          <input type="password" class="form-control" class="form-control" placeholder="Nueva Contraseña" aria-describedby="addon-wrapping"
+          [(ngModel)]="userRequest.passwordChange" (input)="onChangeValuesPassword()"/>
+
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary" [disabled]="!validButton" (click)="createUpdatePasswordChange()">Actualizar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal " tabindex="-1" id="updateChange">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cambio Contraseña </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="input-group flex-nowrap input">
+          <input type="text" class="form-control" placeholder="Nombre" aria-describedby="addon-wrapping"
+            [(ngModel)]="userRequest.name" (input)="onChangeValues()" />
+        </div>
+        <br>
+        <div class="input-group flex-nowrap input">
+          <input type="text" class="form-control" placeholder="Apellido" aria-describedby="addon-wrapping"
+            [(ngModel)]="userRequest.lastname" (input)="onChangeValues()" />
+        </div>
+        <br>
+        <div class="input-group flex-nowrap input">
+          <input type="text" class="form-control" placeholder="Correo" aria-describedby="addon-wrapping"
+            [(ngModel)]="userRequest.email" (input)="onChangeValues()" />
+        </div>
+        <br>
+        <div class="input-group flex-nowrap input">
+          <input type="text" class="form-control" placeholder="Usuario" aria-describedby="addon-wrapping"
+            [(ngModel)]="userRequest.username" (input)="onChangeValues()" />
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary" [disabled]="!validButton" (click)="createUpdateUser()" data-bs-dismiss="modal">Actualizar</button>
+      </div>
+    </div>
+  </div>
+</div>

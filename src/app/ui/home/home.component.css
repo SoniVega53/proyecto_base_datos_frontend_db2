@@ -1,0 +1,42 @@
+h3{
+  font-family: "Indie Flower", cursive;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 1.2rem;
+}
+
+header{
+  color: rgb(12, 12, 12);
+}
+
+h1{
+  font-size: 3rem;
+}
+
+.background-div {
+
+  height: 20rem;
+}
+
+.row{
+  height: 100%;
+  padding: 1rem;
+}
+
+/* Tamaño de texto para pantallas pequeñas (móviles) */
+@media (max-width: 768px) {
+  .ajustCenter{
+    display: block;
+  }
+}
+
+.drop-effect {
+  margin-top: 1rem;
+  margin-right: 1rem;
+  position: relative;
+  display: inline-block;
+  width: 20rem;
+  height: 15rem;
+  overflow: hidden;
+  clip-path: polygon(20% 0%, 80% 0%, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0% 80%, 0% 20%);
+}
