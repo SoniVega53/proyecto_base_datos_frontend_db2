@@ -18,7 +18,7 @@ export class BaseApiService {
     });
 
     return this.http
-      .get(this.urlService.concat(url),{headers})
+      .get(this.urlService.concat(url))
       .pipe(catchError(async (e) => console.log(e)));
   }
 
@@ -29,7 +29,7 @@ export class BaseApiService {
     });
 
     return this.http
-      .delete(this.urlService.concat(url),{headers})
+      .delete(this.urlService.concat(url))
       .pipe(catchError(async (e) => console.log(e)));
   }
 
@@ -46,13 +46,13 @@ export class BaseApiService {
     });
 
     return this.http
-      .post(this.urlService.concat(url), body,{headers})
+      .post(this.urlService.concat(url), body)
       .pipe(catchError(async (e) => console.log(e)));
   }
 
-  postToken(url: string, body: any): Observable<any> {
+  post(url: string, body: any): Observable<any> {
     return this.http
-      .post<{ token: string }>(this.urlService.concat(url), body)
+      .post(this.urlService.concat(url), body)
       .pipe(catchError(async (e) => console.log(e)));
   }
 }

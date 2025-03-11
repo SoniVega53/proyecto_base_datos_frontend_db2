@@ -6,6 +6,7 @@ import { UserEntity } from '../../entity/UserEntity';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 import { UserEntityRequest } from '../../entity/UserEntityRequest';
+import { error } from 'console';
 
 @Component({
   selector: 'app-perfil',

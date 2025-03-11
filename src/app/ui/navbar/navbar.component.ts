@@ -15,7 +15,7 @@ export class NavbarComponent {
     private serviceUser: UserApiService,
     private auth: AuthApiService
   ) {
-    this.username = auth.getUserData().sub
+    this.username = this.auth.getUserName();
   }
 
   logout() {
@@ -23,6 +23,6 @@ export class NavbarComponent {
   }
 
   isUserAdminAcces():boolean{
-    return this.auth.getUserData().role == 'ADMIN'
+    return this.auth.getUserRole() === 'ADMIN'
   }
 }

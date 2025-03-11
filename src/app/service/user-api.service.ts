@@ -14,8 +14,8 @@ export class UserApiService extends AuthApiService{
     return this.getService("admin/user/see");
   }
   getInfoUser(): Observable<any>{
-    const token = this.getToken()
-    return this.postServiceBody(`user/usuario?token=${token}`,null);
+    const user = this.getUserName()
+    return this.postServiceBody(`user/usuario?usuario=${user}`,null);
   }
 
   deleteUsuario(idUsuario:Number): Observable<any>{

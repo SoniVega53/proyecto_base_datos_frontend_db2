@@ -10,73 +10,63 @@ import { UserEntity } from '../entity/UserEntity';
 })
 export class AuthApiService extends BaseApiService {
 
-  private tokenKey = 'token';
+  private userKey = 'usuario';
 
 
   login(body: UserRequest): Observable<any> {
-    return this.postToken(`noauth/login`, body);
+    return this.post(`noauth/login`, body);
   }
 
   register(body: UserEntity): Observable<any> {
-    return this.postToken(`noauth/register`, body);
+    return this.post(`noauth/register`, body);
   }
 
   logout() {
-    localStorage.removeItem(this.tokenKey);
+    localStorage.removeItem(this.userKey);
     this.router.navigate(['/login']);
   }
 
   isAuthenticated(): boolean {
     if (this.isLocalStorageAvailable()){
-      if (this.isTokenExpired()){
-        this.logout()
-        return false
-      }
-      return !!localStorage.getItem('token')
+      return !!localStorage.getItem(this.userKey)
     };
     return false;
   }
 
-  isTokenExpired(): boolean {
-    const token = this.getToken();
-    if (token == null) return false;
+ 
 
-    const decodedToken = this.getDecodedToken();
-    if (decodedToken && decodedToken.exp) {
-      const expirationDate = new Date(decodedToken.exp * 1000);
-      return expirationDate < new Date()
-    }
-    return false;
-  }
-
-
-  getToken(): string | null {
+  getData(): any {
     if(typeof window !== 'undefined'){
-      return localStorage.getItem(this.tokenKey);
+      return localStorage.getItem(this.userKey);
     }else {
       return null;
     }
   }
 
-  getDecodedToken(): any {
-    const token = this.getToken();
-    if (token) {
-      return jwtDecode(token);
-    }
-    return null;
+  // getDecodedToken(): any {
+  //   const token = this.getToken();
+  //   if (token) {
+  //     return jwtDecode(token);
+  //   }
+  //   return null;
+  // }
+
+  // getUserRole(): string | null {
+  //   const decodedToken = this.getDecodedToken();
+  //   if (decodedToken && decodedToken.roles) {
+  //     return decodedToken.roles;
+  //   }
+  //   return null;
+  // }
+
+  getUserName():String {
+    const data = JSON.parse(this.getData());
+    return data?.username;
   }
 
-  getUserRole(): string | null {
-    const decodedToken = this.getDecodedToken();
-    if (decodedToken && decodedToken.roles) {
-      return decodedToken.roles;
-    }
-    return null;
-  }
-
-  getUserData() {
-    const decodedToken = this.getDecodedToken();
-    return decodedToken;
+  getUserRole():String {
+    const data = JSON.parse(this.getData());
+    return data?.rol;
   }
 
 

@@ -13,7 +13,7 @@ export class HomeComponent implements OnInit{
   constructor(private serviceUser: UserApiService,private auth:AuthApiService) {}
 
   ngOnInit(): void {
-    this.username = this.auth.getUserData().sub
+   this.username = this.auth.getUserName();
   }
 
 

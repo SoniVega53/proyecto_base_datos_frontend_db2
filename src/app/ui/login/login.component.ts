@@ -29,7 +29,7 @@ export class LoginComponent{
           confirmButtonText: 'Cool',
         });
       } else {
-        localStorage.setItem('token', res.entity.token);
+        localStorage.setItem('usuario', JSON.stringify(res?.entity));
         this.router.navigate(['/home']);
       }
     });
