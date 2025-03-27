@@ -26,7 +26,7 @@ export class LoginComponent{
           title: 'Error!',
           text: res?.message,
           icon: 'error',
-          confirmButtonText: 'Cool',
+          confirmButtonText: 'Aceptar',
         });
       } else {
         localStorage.setItem('usuario', JSON.stringify(res?.entity));

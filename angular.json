@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "grupo_umg2024_frontend": {
+    "grupo_umg2025_frontend": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -23,7 +23,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/grupo_umg2024_frontend",
+            "outputPath": "dist/grupo_umg2025_frontend",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -79,10 +79,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "grupo_umg2024_frontend:build:production"
+              "buildTarget": "grupo_umg2025_frontend:build:production"
             },
             "development": {
-              "buildTarget": "grupo_umg2024_frontend:build:development"
+              "buildTarget": "grupo_umg2025_frontend:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -90,7 +90,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "grupo_umg2024_frontend:build"
+            "buildTarget": "grupo_umg2025_frontend:build"
           }
         },
         "test": {

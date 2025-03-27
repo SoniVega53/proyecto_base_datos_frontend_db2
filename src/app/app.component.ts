@@ -7,7 +7,7 @@ import { AuthApiService } from './service/auth-api.service';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'grupo_umg2024_frontend';
+  title = 'grupo_umg2025_frontend';
 
   constructor(private authService: AuthApiService){
 
