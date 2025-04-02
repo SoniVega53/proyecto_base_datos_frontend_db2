@@ -13,101 +13,94 @@
 
     <div class="card-body">
       <h5 class="card-title text-center" style="text-transform: uppercase">
-        {{ userEntity.username }}
+        {{ userEntity.user }}
       </h5>
       <div class="container text-center inputs-container">
-        <ul class="list-group list-group-flush list_info">
-          <li class="list-group-item"><span>Nombre: </span> {{ userEntity.name }}</li>
-          <li class="list-group-item"><span>Apellido: </span> {{ userEntity.lastname }}</li>
-          <li class="list-group-item"><span>Email: </span> {{ userEntity.email }}</li>
-          <li class="list-group-item"><span>ROL: </span> {{ userEntity.rol }}</li>
-          <li class="list-group-item"><span>Usuario: </span>  {{ userEntity.username }}</li>
-        </ul>
-        <div class="ajustRight">
-          <a class="card-link"  data-bs-toggle="modal" data-bs-target="#updateChangePassword" (click)="clearDataModel()">Cambiar contraseña</a>
-        </div>
 
-        <div class="row">
-          <div class="col">
-            <div class="d-grid gap-2 col-6 mx-auto">
-              <button type="button" class="btn btn-primary mt-3"  data-bs-toggle="modal" data-bs-target="#updateChange" (click)="editarData()"> Editar</button>
-            </div>
-
+        <!-- <select [ngClass]="selectDataBase === '-1' ? 'placeholder-select' : 'text-select'" class="form-select" aria-label="Default select example" [(ngModel)]="selectDataBase" (change)="onChange($event)">
+          <option selected value="-1" class="placeholder-select" >Seleccione una base de datos</option>
+          <div *ngFor="let item of listDataBase; let i = index">
+            <option [value]="item.Database" style="color: black;">{{i + 1}}) {{item.Database}}</option>
           </div>
-          <div class="col">
-            <div class="d-grid gap-2 col-6 mx-auto">
-              <button type="button" class="btn btn-danger mt-3" (click)="deleteUsuario()">Eliminar</button>
+        </select>
+        <br> -->
+
+        <h3>Listado de Permisos</h3>
+        <div class="permi">
+          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3">
+            <div class="col" *ngFor="let item of permisos; let i = index">
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item table-item">
+                  {{ i + 1 }}) {{ item }}
+                </li>
+              </ul>
+              <br />
             </div>
           </div>
         </div>
 
-      </div>
-    </div>
-
-  </div>
-</div>
-
-
-<div class="modal " tabindex="-1" id="updateChangePassword">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Cambio Contraseña </h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <div class="input-group flex-nowrap input">
-          <input type="password" class="form-control" placeholder="Contraseña" aria-describedby="addon-wrapping"
-            [(ngModel)]="userRequest.password" (input)="onChangeValuesPassword()" />
+        <div class="ajustRight" *ngIf="!rootAccess">
+          <a
+            class="card-link"
+            data-bs-toggle="modal"
+            data-bs-target="#updateChangePassword"
+            (click)="clearDataModel()"
+            >Cambiar contraseña</a
+          >
         </div>
-        <br>
-        <div class="input-group flex-nowrap input">
-          <input type="password" class="form-control" class="form-control" placeholder="Nueva Contraseña" aria-describedby="addon-wrapping"
-          [(ngModel)]="userRequest.passwordChange" (input)="onChangeValuesPassword()"/>
-
-        </div>
-
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-primary" [disabled]="!validButton" (click)="createUpdatePasswordChange()">Actualizar</button>
       </div>
     </div>
   </div>
 </div>
 
-
-<div class="modal " tabindex="-1" id="updateChange">
+<div class="modal" tabindex="-1" id="updateChangePassword">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Cambio Contraseña </h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <h5 class="modal-title">Cambio Contraseña</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
       </div>
       <div class="modal-body">
         <div class="input-group flex-nowrap input">
-          <input type="text" class="form-control" placeholder="Nombre" aria-describedby="addon-wrapping"
-            [(ngModel)]="userRequest.name" (input)="onChangeValues()" />
+          <input
+            type="password"
+            class="form-control"
+            placeholder="Contraseña"
+            aria-describedby="addon-wrapping"
+            [(ngModel)]="userRequest.password"
+            (input)="onChangeValuesPassword()"
+          />
         </div>
-        <br>
+        <br />
         <div class="input-group flex-nowrap input">
-          <input type="text" class="form-control" placeholder="Apellido" aria-describedby="addon-wrapping"
-            [(ngModel)]="userRequest.lastname" (input)="onChangeValues()" />
-        </div>
-        <br>
-        <div class="input-group flex-nowrap input">
-          <input type="text" class="form-control" placeholder="Correo" aria-describedby="addon-wrapping"
-            [(ngModel)]="userRequest.email" (input)="onChangeValues()" />
-        </div>
-        <br>
-        <div class="input-group flex-nowrap input">
-          <input type="text" class="form-control" placeholder="Usuario" aria-describedby="addon-wrapping"
-            [(ngModel)]="userRequest.username" (input)="onChangeValues()" />
+          <input
+            type="password"
+            class="form-control"
+            class="form-control"
+            placeholder="Nueva Contraseña"
+            aria-describedby="addon-wrapping"
+            [(ngModel)]="userRequest.passwordChange"
+            (input)="onChangeValuesPassword()"
+          />
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-primary" [disabled]="!validButton" (click)="createUpdateUser()" data-bs-dismiss="modal">Actualizar</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Cancelar
+        </button>
+        <button
+          type="button"
+          class="btn btn-primary"
+          [disabled]="!validButton"
+          (click)="createUpdatePasswordChange()"
+        >
+          Actualizar
+        </button>
       </div>
     </div>
   </div>

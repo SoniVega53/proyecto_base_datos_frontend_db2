@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-is-empty',
@@ -7,4 +7,6 @@ import { Component } from '@angular/core';
 })
 export class IsEmptyComponent {
 
+  @Input() title: String = 'Nota';
+  @Input() descripcion: String = 'Tu lista de colección está vacía';
 }

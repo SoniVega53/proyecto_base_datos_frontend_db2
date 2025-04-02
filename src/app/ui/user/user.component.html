@@ -1,28 +1,100 @@
-
-
 <div class="container-md mt-2">
-
   <h1 class="text-center">USUARIOS CREADOS</h1>
 
+  <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+    <button
+      class="btn btn-primary me-md-2"
+      type="button"
+      data-bs-toggle="modal"
+      data-bs-target="#userCreateModal"
+      style=" width: 150px;"
+    >
+      + Crear Usuario
+    </button>
+  </div>
+  <br />
   <table class="table">
     <thead>
       <tr class="table-dark">
         <th scope="col">#</th>
         <th scope="col">UserName</th>
-        <th scope="col">Email</th>
-        <th scope="col">Rol</th>
-        <!-- <th scope="col">Opciones</th> -->
+        <th scope="col">Host</th>
+        <th scope="col" style="text-align: center;">Opciones</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let user of usersList">
-        <th scope="row">{{ user.id }}</th>
-        <td>{{ user.username }}</td>
-        <td>{{ user.email }}</td>
-        <td>{{ user.rol }}</td>
-        <!-- <td class="ajustCenter"><button type="button" class="btn btn-danger" [disabled]="!disableROl(user)">Eliminar</button></td> -->
+      <tr *ngFor="let user of usersList; let i = index">
+        <th scope="row">{{ i + 1 }}</th>
+        <td>{{ user.user }}</td>
+        <td>{{ user.host }}</td>
+        <td class="d-grid gap-2 d-md-flex justify-content-md-end" >
+          <button type="button" class="btn btn-danger btn-sm " style="margin-right: 4px; width: 90px;" (click)="eliminarUser(user.user)" [disabled]="user.user == 'root' || user.host == 'localhost'" >Eliminar</button>
+          <button type="button" class="btn btn-primary btn-sm"  style="width: 90px;" [disabled]="user.user == 'root' || user.host == 'localhost'" (click)="editarUsuario(user)">Editar</button>
+        </td>
       </tr>
     </tbody>
   </table>
+</div>
 
+<div
+  class="modal fade"
+  id="userCreateModal"
+  tabindex="-1"
+  aria-labelledby="userCreateModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="userCreateModalLabel">Modal title</h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col">
+            <div class="input-group flex-nowrap input">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Nombre de Usuario"
+                aria-describedby="addon-wrapping"
+                [(ngModel)]="userRequest.username"
+                (input)="onChangeValues()"
+              />
+            </div>
+            <br />
+
+            <div class="input-group flex-nowrap input">
+              <input
+                type="password"
+                class="form-control"
+                placeholder="Contraseña"
+                aria-describedby="addon-wrapping"
+                [(ngModel)]="userRequest.password"
+                (input)="onChangeValues()"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Cerrar
+        </button>
+        <button
+          type="button"
+          class="btn btn-primary"
+          (click)="registerUser()"
+          [disabled]="!validButton"
+        >
+          Crear Usuario
+        </button>
+      </div>
+    </div>
+  </div>
 </div>

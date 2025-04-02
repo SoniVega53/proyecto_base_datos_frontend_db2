@@ -1,21 +1,28 @@
 import { UserRequest } from './../../entity/UserRequest';
-import { AfterViewInit, ChangeDetectorRef, Component, isDevMode, OnInit } from '@angular/core';
+import {
+  AfterViewInit,
+  ChangeDetectorRef,
+  Component,
+  isDevMode,
+  OnInit,
+} from '@angular/core';
 import { AuthApiService } from '../../service/auth-api.service';
 import { UserEntity } from '../../entity/UserEntity';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { ComponentMainComponent } from '../main/component-main/component-main.component';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
 })
-export class LoginComponent{
-  userRequest: UserRequest;
-  validButton:boolean = false;
+export class LoginComponent extends ComponentMainComponent implements OnInit {
+  userRequest!: UserRequest;
+  validButton: boolean = false;
   public myProperty: boolean = false;
 
-  constructor(private authService: AuthApiService, public router: Router,private cdr: ChangeDetectorRef) {
+  ngOnInit(): void {
     this.userRequest = new UserRequest();
   }
 
@@ -35,13 +42,16 @@ export class LoginComponent{
     });
   }
 
-  onChangeValues(){
+  onChangeValues() {
     this.validButton = this.validActiveButton();
   }
 
-  validActiveButton():boolean{
-    return this.userRequest.username?.trim() != "" && this.userRequest.username != null &&
-        this.userRequest.password?.trim() != "" && this.userRequest.password != null
+  validActiveButton(): boolean {
+    return (
+      this.userRequest.username?.trim() != '' &&
+      this.userRequest.username != null &&
+      this.userRequest.password?.trim() != '' &&
+      this.userRequest.password != null
+    );
   }
-
 }

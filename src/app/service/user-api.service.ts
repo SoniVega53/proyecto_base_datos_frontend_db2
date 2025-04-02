@@ -10,20 +10,23 @@ import { UserEntityRequest } from '../entity/UserEntityRequest';
 export class UserApiService extends AuthApiService{
 
 
-  getAllUsers(): Observable<UserEntity[]>{
-    return this.getService("admin/user/see");
+  getAllUsers(): Observable<any>{
+    return this.postServiceBody("verUsuarios");
   }
   getInfoUser(): Observable<any>{
     const user = this.getUserName()
     return this.postServiceBody(`user/usuario?usuario=${user}`,null);
   }
 
-  deleteUsuario(idUsuario:Number): Observable<any>{
-    return this.deleteService(`user/usuario/eliminar/${idUsuario}`);
+  deleteUsuario(name:any): Observable<any>{
+    const param = { nombre:name}
+
+    return this.postServiceBody(`eliminarUsurio`,param);
   }
 
-  updateUserPassword(body:UserEntityRequest,idUser:Number):Observable<any>{
-    return this.postServiceBody(`user/usuario/update/password/${idUser}`,body);
+  updateUserPassword(validPass:any, newpas:any):Observable<any>{
+    const param = { validPassword:validPass, newPassword:newpas}
+    return this.postServiceBody(`cambiarPassword`,param);
   }
 
   updateUser(body:UserEntityRequest,idUser:Number):Observable<any>{

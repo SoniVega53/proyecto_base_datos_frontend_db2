@@ -1,9 +1,5 @@
 export class UserEntity{
-  id?:Number;
-  name?:String;
-  username?:String;
-  lastname?:String;
-  email?:String;
+  user?:String;
+  host?:String;
   password?:String;
-  rol?:String;
 }

@@ -12,6 +12,9 @@ import { UserComponent } from './ui/user/user.component';
 import { RegisterComponent } from './ui/register/register.component';
 import { PerfilComponent } from './ui/perfil/perfil.component';
 import { IsEmptyComponent } from './ui/is-empty/is-empty.component';
+import { ComponentMainComponent } from './ui/main/component-main/component-main.component';
+import { PermisosUsuariosComponent } from './ui/user-action/permisos-usuarios/permisos-usuarios.component';
+import { ConsumeQueryComponent } from './ui/main/consume-query/consume-query.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +26,9 @@ import { IsEmptyComponent } from './ui/is-empty/is-empty.component';
     RegisterComponent,
     PerfilComponent,
     IsEmptyComponent,
+    ComponentMainComponent,
+    PermisosUsuariosComponent,
+    ConsumeQueryComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [

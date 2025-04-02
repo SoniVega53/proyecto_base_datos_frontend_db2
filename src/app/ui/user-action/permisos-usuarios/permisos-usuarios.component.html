@@ -1,0 +1,104 @@
+<div class="container-login">
+  <div>
+    <div class="card">
+
+      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <button
+          type="button"
+          class="btn btn-danger btn-sm"
+          style="margin-right: 4px; width: 90px"
+          (click)="eliminarUser()"
+        >
+          Eliminar
+        </button>
+      </div>
+
+      <div class="card-img-top svg-images">
+        <div style="width: 9rem; height: 9rem">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+            <path
+              fill="#07204b"
+              d="M256 288c79.5 0 144-64.5 144-144S335.5 0 256 0 112 64.5 112 144s64.5 144 144 144zm128 32h-55.1c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16H128C57.3 320 0 377.3 0 448v16c0 26.5 21.5 48 48 48h416c26.5 0 48-21.5 48-48v-16c0-70.7-57.3-128-128-128z"
+            />
+          </svg>
+        </div>
+      </div>
+
+      <div class="card-body">
+        <h5 class="card-title text-center" style="text-transform: uppercase">
+          {{ userEdit.user }}
+        </h5>
+
+        <h3>Listado de Permisos</h3>
+        <div class="permi">
+          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3">
+            <div class="col" *ngFor="let item of permisos; let i = index">
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item table-item">
+                  {{ i + 1 }}) {{ item }}
+                </li>
+              </ul>
+              <br />
+            </div>
+          </div>
+        </div>
+
+        <h3 class="text-center">Actualizar Permisos para Usuario</h3>
+
+        <select [ngClass]="selectDataBase === '-1' ? 'placeholder-select' : 'text-select'" class="form-select" aria-label="Default select example" [(ngModel)]="selectDataBase" (change)="onChange($event)">
+          <option selected value="-1" class="placeholder-select" >Seleccione una base de datos</option>
+          <div *ngFor="let item of listDataBase; let i = index">
+            <option [value]="item.Database" style="color: black;">{{i + 1}}) {{item.Database}}</option>
+          </div>
+        </select>
+        <br>
+
+        <div class="form-check form-switch">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            role="switch"
+            id="flexSwitchCheckDefault"
+            [(ngModel)]="revoke"
+          />
+          <label class="form-check-label" for="flexSwitchCheckDefault"
+            >Revocar Permisos</label
+          >
+        </div>
+        <br />
+
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2">
+          <div class="col" *ngFor="let item of this.listCal.listadoPermisos">
+            <div class="form-check form-switch">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                role="switch"
+                id="flexSwitchCheckDefault"
+                [(ngModel)]="item.access"
+              />
+              <label class="form-check-label" for="flexSwitchCheckDefault">{{
+                item.nombre
+              }}</label>
+            </div>
+          </div>
+        </div>
+        <br />
+        <div class="nota" *ngIf="revoke">
+          <p class="text-center">
+            Nota:
+            <span
+              >Seleccione los permisos que desea revocar para el usuario.</span
+            >
+          </p>
+        </div>
+        <br />
+        <div class="d-grid gap-2 col-6 mx-auto">
+          <button class="btn btn-primary" type="button" (click)="addPermisos()">
+            Aceptar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

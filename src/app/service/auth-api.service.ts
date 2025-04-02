@@ -10,15 +10,14 @@ import { UserEntity } from '../entity/UserEntity';
 })
 export class AuthApiService extends BaseApiService {
 
-  private userKey = 'usuario';
 
 
   login(body: UserRequest): Observable<any> {
-    return this.post(`noauth/login`, body);
+    return this.post(`login`, body);
   }
 
   register(body: UserEntity): Observable<any> {
-    return this.post(`noauth/register`, body);
+    return this.post(`register`, body);
   }
 
   logout() {
@@ -33,40 +32,10 @@ export class AuthApiService extends BaseApiService {
     return false;
   }
 
- 
-
-  getData(): any {
-    if(typeof window !== 'undefined'){
-      return localStorage.getItem(this.userKey);
-    }else {
-      return null;
-    }
-  }
-
-  // getDecodedToken(): any {
-  //   const token = this.getToken();
-  //   if (token) {
-  //     return jwtDecode(token);
-  //   }
-  //   return null;
-  // }
-
-  // getUserRole(): string | null {
-  //   const decodedToken = this.getDecodedToken();
-  //   if (decodedToken && decodedToken.roles) {
-  //     return decodedToken.roles;
-  //   }
-  //   return null;
-  // }
 
   getUserName():String {
     const data = JSON.parse(this.getData());
-    return data?.username;
-  }
-
-  getUserRole():String {
-    const data = JSON.parse(this.getData());
-    return data?.rol;
+    return data?.user;
   }
 
 

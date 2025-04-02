@@ -1,33 +1,39 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthApiService } from '../../service/auth-api.service';
 import { UserEntity } from '../../entity/UserEntity';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
+import { ComponentMainComponent } from '../main/component-main/component-main.component';
+import { UserRequest } from '../../entity/UserRequest';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrl: './register.component.css'
+  styleUrl: './register.component.css',
 })
-export class RegisterComponent {
-  userRequest: UserEntity;
-  validButton:boolean = false;
+export class RegisterComponent
+  extends ComponentMainComponent
+  implements OnInit
+{
+  userRequest!: UserRequest;
+  validButton: boolean = false;
   public myProperty: boolean = false;
 
-  constructor(private authService: AuthApiService, public router: Router) {
-    this.userRequest = new UserEntity();
+  ngOnInit(): void {
+    this.userRequest = new UserRequest();
   }
 
-  onChangeValues(){
+  onChangeValues() {
     this.validButton = this.validActiveButton();
   }
 
-  validActiveButton():boolean{
-    return this.userRequest.username?.trim() != "" && this.userRequest.username != null &&
-        this.userRequest.password?.trim() != "" && this.userRequest.password != null &&
-        this.userRequest.name?.trim() != "" && this.userRequest.name != null &&
-        this.userRequest.lastname?.trim() != "" && this.userRequest.lastname != null &&
-        this.userRequest.email?.trim() != "" && this.userRequest.email != null
+  validActiveButton(): boolean {
+    return (
+      this.userRequest.username?.trim() != '' &&
+      this.userRequest.username != null &&
+      this.userRequest.password?.trim() != '' &&
+      this.userRequest.password != null
+    );
   }
 
   registerUser() {
@@ -37,10 +43,32 @@ export class RegisterComponent {
           title: 'Error!',
           text: res?.message,
           icon: 'error',
-          confirmButtonText: 'Cool',
+          confirmButtonText: 'Aceptar',
         });
       } else {
-        this.router.navigate(['/login']);
+        this.login();
+      }
+    });
+  }
+
+  login() {
+    this.authService.login(this.userRequest).subscribe((res) => {
+      if (res.code == '400') {
+        Swal.fire({
+          title: 'Error!',
+          text: res?.message,
+          icon: 'error',
+          confirmButtonText: 'Aceptar',
+        });
+      } else {
+        Swal.fire({
+          title: 'Success!',
+          text: res?.message,
+          icon: 'success',
+          confirmButtonText: 'Aceptar',
+        });
+        localStorage.setItem('usuario', JSON.stringify(res?.entity));
+        this.router.navigate(['/home']);
       }
     });
   }

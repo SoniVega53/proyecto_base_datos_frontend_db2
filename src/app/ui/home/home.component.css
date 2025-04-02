@@ -40,3 +40,25 @@ h1{
   overflow: hidden;
   clip-path: polygon(20% 0%, 80% 0%, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0% 80%, 0% 20%);
 }
+
+.card-header{
+  background-color: rgb(53, 69, 163);
+  color:  rgb(230, 230, 230);
+}
+
+.list-group-item{
+  text-align: left;
+}
+
+.tables{
+  min-height: 15rem;
+  max-height: 15rem;
+  overflow-y: auto;
+}
+
+.table-item {
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
