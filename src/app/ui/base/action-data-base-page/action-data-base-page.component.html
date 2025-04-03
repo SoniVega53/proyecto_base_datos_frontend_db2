@@ -1,0 +1,104 @@
+<div class="container-md mt-2">
+  <h2 class="text-center">Base de Datos: {{dataBaseList.databaseName}}</h2>
+
+</div>
+
+<div class="colum-data">
+  <div class="row">
+    <div class="col-3">
+      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        &#x200B;
+      </div>
+      <div class="d-grid gap-2 col-6 mx-auto" *ngFor="let item of listActionDB">
+        <button type="button" class="btn btn-secondary mb-2" (click)="actionClick(item)">{{item.name}}</button>
+      </div>
+    </div>
+    <div class="col-6">
+
+      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <button type="button" class="btn btn-danger mb-2" (click)="actionClickLimpiar()">Limpiar</button>
+        <button class="btn btn-primary mb-2" type="button" (click)="actionClickEjecutar()">Ejecutar</button>
+      </div>
+
+      <ngx-codemirror
+        #codeEditor
+        class="mb-2"
+        [(ngModel)]="content"
+        [options]="editorOptions"
+      ></ngx-codemirror>
+      <br>
+      <div class="nota">
+        <p class="">
+          Nota:
+          <span
+            >Recuerda siempre agregar un ';' al final de cada petición.</span
+          >
+        </p>
+      </div>
+
+
+      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <button type="button" class="btn btn-danger mb-2" (click)="actionClickLimpiarConsole()">Limpiar</button>
+      </div>
+
+      <div  *ngIf="listadoRepuesta.length > 0">
+        <div class="table-custom">
+          <table class="table table-bordered ">
+            <thead>
+              <tr>
+                <th *ngFor="let key of objectKeys(responseQuery[numTable].listadoRepuesta[0])">{{ key }}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let row of responseQuery[numTable].listadoRepuesta">
+                <td *ngFor="let key of objectKeys(row)">{{ row[key] }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <nav aria-label="Page navigation example">
+          <ul class="pagination">
+            <li class="page-item">
+              <a class="page-link" (click)="clickPage(0,false,true)" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+              </a>
+            </li>
+            <div *ngFor="let item of responseQuery; let i = index">
+              <li [ngClass]="i == numTable? 'active' : ''" class="page-item"><a class="page-link" (click)="clickPage(i)">{{i + 1}}</a></li>
+            </div>
+            <li class="page-item">
+              <a class="page-link" (click)="clickPage(0,true,false)" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+
+      </div>
+
+      <ngx-codemirror
+        [(ngModel)]="console_text"
+        [options]="editorOptionsConsole"
+      ></ngx-codemirror>
+    </div>
+
+    <div class="col-3" >
+      <h3 style="margin-top: 8px">Tablas:</h3>
+      <div class="table-list">
+        <ul
+        class="list-group list-group-flush"
+        *ngFor="let table of dataBaseList?.tables; let i = index"
+      >
+        <li class="list-group-item table-item"  (click)="copyToClipboard(table.tableName)"  (dblclick)="onDoubleClick(table.tableName)">
+          {{ i + 1 }}) {{ table.tableName }}
+        </li>
+      </ul>
+      </div>
+    </div>
+
+
+
+
+  </div>
+</div>

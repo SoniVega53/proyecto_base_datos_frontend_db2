@@ -30,4 +30,8 @@ export class HomeComponent extends ComponentMainComponent implements OnInit {
     });
   }
 
+  clickEdit = (dbName:any)=>{
+    this.router.navigate(['/action-db'], { queryParams: { database: dbName.databaseName } });
+  }
+
 }

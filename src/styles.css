@@ -43,3 +43,7 @@ body{
   overflow: hidden;
   text-overflow: ellipsis;
 }
+.nota{
+  background: #def6ff;
+  padding: 0 8px;
+}

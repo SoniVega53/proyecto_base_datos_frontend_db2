@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ConsumeQueryComponent } from './consume-query.component';
+import { ActionDataBaseComponent } from './action-data-base.component';
 
-describe('ConsumeQueryComponent', () => {
-  let component: ConsumeQueryComponent;
-  let fixture: ComponentFixture<ConsumeQueryComponent>;
+describe('ActionDataBaseComponent', () => {
+  let component: ActionDataBaseComponent;
+  let fixture: ComponentFixture<ActionDataBaseComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ConsumeQueryComponent]
+      declarations: [ActionDataBaseComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(ConsumeQueryComponent);
+    fixture = TestBed.createComponent(ActionDataBaseComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

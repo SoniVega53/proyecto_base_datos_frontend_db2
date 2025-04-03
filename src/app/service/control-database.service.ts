@@ -7,8 +7,13 @@ import { PermisosUsuario } from '../entity/PermisosUsuario';
   providedIn: 'root',
 })
 export class ControlDatabaseService extends BaseApiService {
+
   getListDataBase(): Observable<any> {
     return this.postServiceBody(`obtenerTablasDeBaseAll`);
+  }
+  getListDataBaseTables(nameBase:any): Observable<any> {
+    const params = { nameDataBase: nameBase };
+    return this.postServiceBody(`obtenerTablasDeBase`,params);
   }
 
   getListDataBaseOnly(): Observable<any> {
@@ -39,6 +44,12 @@ export class ControlDatabaseService extends BaseApiService {
   removePermisos(name: any, perm: any) {
     const params = { nombre: name };
     return this.postServiceBody(`revocarPermisosUsuario`, params, perm);
+  }
+
+
+  ejecutarQuery(query: any,nameDataBase:any) {
+    const body = { query: query,nameDataBase: nameDataBase};
+    return this.postServiceBody(`ejecutarQuery`, {}, body);
   }
 
   removeAddPermisos(name: any, nameDataBase: any,perm: any, revoque: boolean) {

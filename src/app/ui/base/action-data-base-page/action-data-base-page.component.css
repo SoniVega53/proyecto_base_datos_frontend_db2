@@ -1,0 +1,18 @@
+.colum-data{
+  margin: 1rem;
+}
+.col{
+
+}
+.table-list{
+  max-height: 40rem !important;
+  overflow-y: auto;
+}
+
+.table-custom {
+  max-height: 30rem !important;
+  overflow-y: auto;
+  margin: 1rem auto;
+  overflow-x: auto;
+  background: #ffffff;
+}

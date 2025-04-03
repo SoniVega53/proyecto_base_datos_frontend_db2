@@ -14,7 +14,8 @@ import { PerfilComponent } from './ui/perfil/perfil.component';
 import { IsEmptyComponent } from './ui/is-empty/is-empty.component';
 import { ComponentMainComponent } from './ui/main/component-main/component-main.component';
 import { PermisosUsuariosComponent } from './ui/user-action/permisos-usuarios/permisos-usuarios.component';
-import { ConsumeQueryComponent } from './ui/main/consume-query/consume-query.component';
+import { CodemirrorModule } from '@ctrl/ngx-codemirror';
+import { ActionDataBasePageComponent } from './ui/base/action-data-base-page/action-data-base-page.component';
 
 @NgModule({
   declarations: [
@@ -28,9 +29,9 @@ import { ConsumeQueryComponent } from './ui/main/consume-query/consume-query.com
     IsEmptyComponent,
     ComponentMainComponent,
     PermisosUsuariosComponent,
-    ConsumeQueryComponent,
+    ActionDataBasePageComponent
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule,CodemirrorModule],
   providers: [
   ],
   bootstrap: [AppComponent],

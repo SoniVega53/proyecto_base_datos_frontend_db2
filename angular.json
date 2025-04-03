@@ -37,7 +37,13 @@
             "styles": [
               "node_modules/bootstrap/scss/bootstrap.scss",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "src/styles.css"
+              "src/styles.css",
+              "node_modules/codemirror/theme/material.css",
+              "node_modules/codemirror/addon/hint/show-hint.css",
+              "node_modules/codemirror/lib/codemirror.css",
+              "node_modules/codemirror/theme/dracula.css",
+              "node_modules/codemirror/theme/material.css",
+              "node_modules/codemirror/theme/eclipse.css"
             ],
             "scripts": [
               "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
@@ -108,7 +114,13 @@
             "styles": [
               "node_modules/bootstrap/scss/bootstrap.scss",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "src/styles.css"
+              "src/styles.css",
+              "node_modules/codemirror/theme/material.css",
+              "node_modules/codemirror/addon/hint/show-hint.css",
+              "node_modules/codemirror/lib/codemirror.css",
+              "node_modules/codemirror/theme/dracula.css",
+              "node_modules/codemirror/theme/material.css",
+              "node_modules/codemirror/theme/eclipse.css"
             ],
             "scripts": [
               "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
