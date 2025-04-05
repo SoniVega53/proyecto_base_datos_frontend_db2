@@ -16,7 +16,7 @@ import { QueryResponseModel } from '../../entity/QueryResponseModel';
 export class HomeComponent extends ComponentMainComponent implements OnInit {
   listDataBase: any[] = [];
   listDataBaseTable: any[] = [];
-  permisos: boolean = true;
+  permisos: boolean = false;
   responseQuery: QueryResponseModel[] = [];
   basedatosname = '';
   validButton: boolean = false;
@@ -30,7 +30,9 @@ export class HomeComponent extends ComponentMainComponent implements OnInit {
       if (res.code == '400') {
         this.permisos = false;
       } else {
+        console.log(this.listDataBase)
         this.listDataBase = res.entity;
+        this.permisos = this.listDataBase.length > 0;
       }
     });
   }
