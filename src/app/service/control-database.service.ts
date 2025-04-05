@@ -51,6 +51,17 @@ export class ControlDatabaseService extends BaseApiService {
     const body = { query: query,nameDataBase: nameDataBase};
     return this.postServiceBody(`ejecutarQuery`, {}, body);
   }
+  ejecutarQueryMain(nombre_schema: any,create:boolean) {
+    const body = {query:''};
+    body.query = create ? `CREATE DATABASE ${nombre_schema}` : `DROP DATABASE ${nombre_schema}`;
+
+    return this.postServiceBody(`ejecutarQueryMain`, {}, body);
+  }
+
+  ejecutarQueryAll(query: any) {
+    const body = {query:query};
+    return this.postServiceBody(`ejecutarQueryMain`, {}, body);
+  }
 
   removeAddPermisos(name: any, nameDataBase: any,perm: any, revoque: boolean) {
     if (nameDataBase === '-1') {

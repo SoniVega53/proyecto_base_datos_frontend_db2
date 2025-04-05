@@ -9,6 +9,7 @@ import { RegisterComponent } from './ui/register/register.component';
 import { PerfilComponent } from './ui/perfil/perfil.component';
 import { PermisosUsuariosComponent } from './ui/user-action/permisos-usuarios/permisos-usuarios.component';
 import { ActionDataBasePageComponent } from './ui/base/action-data-base-page/action-data-base-page.component';
+import { QueryEjecutablePageComponent } from './ui/base/query-ejecutable-page/query-ejecutable-page.component';
 
 const routes: Routes = [
   {path:"home",component:HomeComponent, canActivate: [AuthGuard]},
@@ -18,6 +19,7 @@ const routes: Routes = [
   {path:"perfil",component:PerfilComponent, canActivate: [AuthGuard]},
   {path:"user-edit",component:PermisosUsuariosComponent, canActivate: [AuthGuard]},
   {path:"action-db",component:ActionDataBasePageComponent, canActivate: [AuthGuard]},
+  {path:"query-ejecutable",component:QueryEjecutablePageComponent, canActivate: [AuthGuard]},
   { path: '**', redirectTo: '/home' }
 ];
 

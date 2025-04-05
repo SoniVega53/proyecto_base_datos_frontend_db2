@@ -1,6 +1,17 @@
 <div class="container-md mt-2">
   <h2 class="text-center">Base de Datos: {{dataBaseList.databaseName}}</h2>
 
+  <div class=" ajustCenter">
+    <div>
+     <select [ngClass]="nameDataBase === '-1' ? 'placeholder-select' : 'text-select'" class="form-select" aria-label="Default select example" [(ngModel)]="nameDataBase" (change)="onChange($event)">
+       <option selected value="-1" class="placeholder-select" >Seleccione una base de datos</option>
+       <div *ngFor="let item of listDataBase; let i = index">
+         <option [value]="item.Database" style="color: black;">{{i + 1}}) {{item.Database}}</option>
+       </div>
+     </select>
+     <br>
+    </div>
+   </div>
 </div>
 
 <div class="colum-data">
@@ -41,7 +52,7 @@
         <button type="button" class="btn btn-danger mb-2" (click)="actionClickLimpiarConsole()">Limpiar</button>
       </div>
 
-      <div  *ngIf="listadoRepuesta.length > 0">
+      <div  *ngIf="responseQuery.length > 0">
         <div class="table-custom">
           <table class="table table-bordered ">
             <thead>

@@ -63,6 +63,13 @@ export class PermisosUsuariosComponent
             this.clearSwitch();
           }
         });
+    }else{
+      Swal.fire({
+        title: 'Nota!',
+        text: "Seleccione un permiso, para continuar",
+        icon: 'warning',
+        confirmButtonText: 'Aceptar',
+      });
     }
   }
 

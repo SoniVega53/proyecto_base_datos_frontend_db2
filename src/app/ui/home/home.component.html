@@ -25,6 +25,8 @@
         <button
         class="btn btn-primary me-md-2"
         type="button"
+        data-bs-toggle="modal"
+        data-bs-target="#createModal"
         style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem; width: 150px"
       >
         + Crear Base de Datos
@@ -55,6 +57,7 @@
                   class="btn btn-outline-danger me-md-2"
                   style="width: 40%"
                   type="button"
+                  (click)="actionClickEjecutar(item?.databaseName,false)"
                 >
                   Eliminar
                 </button>
@@ -80,5 +83,57 @@
     <app-is-empty
       descripcion="No tiene permisos para visualizar las tablas"
     ></app-is-empty>
+  </div>
+</div>
+
+
+<div
+  class="modal fade"
+  id="createModal"
+  tabindex="-1"
+  aria-labelledby="createModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="createModalLabel">Crear Base de Datos</h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col">
+            <div class="input-group flex-nowrap input">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Nombre de Base Datos"
+                aria-describedby="addon-wrapping"
+                [(ngModel)]="basedatosname"
+                (input)="onChangeValues()"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Cerrar
+        </button>
+        <button
+          type="button"
+          class="btn btn-primary"
+          (click)="actionClickEjecutar(basedatosname,true)"
+          [disabled]="!validButton"
+        >
+          Confirmar
+        </button>
+      </div>
+    </div>
   </div>
 </div>

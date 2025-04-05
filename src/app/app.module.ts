@@ -16,6 +16,7 @@ import { ComponentMainComponent } from './ui/main/component-main/component-main.
 import { PermisosUsuariosComponent } from './ui/user-action/permisos-usuarios/permisos-usuarios.component';
 import { CodemirrorModule } from '@ctrl/ngx-codemirror';
 import { ActionDataBasePageComponent } from './ui/base/action-data-base-page/action-data-base-page.component';
+import { QueryEjecutablePageComponent } from './ui/base/query-ejecutable-page/query-ejecutable-page.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { ActionDataBasePageComponent } from './ui/base/action-data-base-page/act
     IsEmptyComponent,
     ComponentMainComponent,
     PermisosUsuariosComponent,
-    ActionDataBasePageComponent
+    ActionDataBasePageComponent,
+    QueryEjecutablePageComponent
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule,CodemirrorModule],
   providers: [
