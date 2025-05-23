@@ -23,14 +23,14 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let user of usersList; let i = index">
+      <tr *ngFor="let user of usersList; let i = index" >
         <th scope="row">{{ i + 1 }}</th>
-        <td>{{ user.user }}</td>
-        <td>{{ user.host }}</td>
-        <td class="d-grid gap-2 d-md-flex justify-content-md-end" >
-          <button type="button" class="btn btn-danger btn-sm " style="margin-right: 4px; width: 90px;" (click)="eliminarUser(user.user)" [disabled]="user.user == 'root' || user.host == 'localhost'" >Eliminar</button>
-          <button type="button" class="btn btn-primary btn-sm"  style="width: 90px;" [disabled]="user.user == 'root' || user.host == 'localhost'" (click)="editarUsuario(user)">Editar</button>
-        </td>
+          <td>{{ user.user }}</td>
+          <td>{{ user.host }}</td>
+          <td class="d-grid gap-2 d-md-flex justify-content-md-end" >
+            <button type="button" class="btn btn-danger btn-sm " style="margin-right: 4px; width: 90px;" (click)="eliminarUser(user.user)" [disabled]="user.user == 'root' || user.user == 'admin_cluster' || user.host == 'localhost'" >Eliminar</button>
+            <button type="button" class="btn btn-primary btn-sm"  style="width: 90px;" [disabled]="user.user == 'root' || user.host == 'localhost'" (click)="editarUsuario(user)">Editar</button>
+          </td>
       </tr>
     </tbody>
   </table>

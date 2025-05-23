@@ -28,6 +28,9 @@ export class QueryEjecutablePageComponent
   listActionDB: any = [];
   listDataBase: any[] = [];
 
+  textoTrans="CAMBIAR TRANSACCION"
+  isTransaccion:boolean= false;
+
   objectKeys(obj: any): string[] {
     return obj ? Object.keys(obj) : [];
   }
@@ -64,8 +67,13 @@ export class QueryEjecutablePageComponent
     this.getDataBaseList();
     this.listActionDB = new QueryConsultasText().getListQuery(
       this.nameTable,
-      this.username
+      this.username,
+      this.dataBaseList.databaseName
     );
+  }
+
+  onClickChangeTran = () => {
+    this.onChangeQueryList(!this.isTransaccion);
   }
 
   getDataBaseListTable() {
@@ -126,8 +134,11 @@ export class QueryEjecutablePageComponent
       return;
     }
 
+    const va = this.obtenerTextoSeleccionado(this.codeEditor);
+
+
     this.servicecontrol
-      .ejecutarQuery(this.content, this.dataBaseList.databaseName)
+      .ejecutarQuery(va.length > 0 ? va:this.content, this.dataBaseList.databaseName)
       .subscribe(
         (res) => {
           if (res.code === '400') {
@@ -181,8 +192,9 @@ export class QueryEjecutablePageComponent
 
 
   actionClickEjecutarSinDB() {
+    const va = this.obtenerTextoSeleccionado(this.codeEditor);
     this.servicecontrol
-      .ejecutarQueryAll(this.content)
+      .ejecutarQueryAll(va.length > 0 ? va:this.content)
       .subscribe(
         (res) => {
           if (res.code === '400') {
@@ -276,10 +288,13 @@ export class QueryEjecutablePageComponent
 
   clickSelectTable(name: any) {
     this.nameTable = name;
-    this.listActionDB = new QueryConsultasText().getListQuery(
-      this.nameTable,
-      this.username
-    );
+    this.onChangeQueryList(false);
+  }
+
+  onChangeQueryList(isTransaccion:boolean){
+    this.isTransaccion = isTransaccion;
+    this.listActionDB = this.isTransaccion ? new QueryConsultasText().getListQueryTransaction(this.nameTable,this.username,
+          this.dataBaseList.databaseName) :new QueryConsultasText().getListQuery(this.nameTable,this.username,this.dataBaseList.databaseName);
   }
 
   onChange(event: Event){

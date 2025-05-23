@@ -23,7 +23,9 @@ export class UserComponent extends ComponentMainComponent implements OnInit {
 
   getAllServiceUsers() {
     this.serviceUser.getAllUsers().subscribe((res) => {
-      this.usersList = res?.entity;
+      const list = res?.entity || [];
+
+      this.usersList = list.filter((value: any) => value.host !== 'localhost');
     });
   }
 

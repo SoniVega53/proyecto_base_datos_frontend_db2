@@ -17,6 +17,7 @@ import { PermisosUsuariosComponent } from './ui/user-action/permisos-usuarios/pe
 import { CodemirrorModule } from '@ctrl/ngx-codemirror';
 import { ActionDataBasePageComponent } from './ui/base/action-data-base-page/action-data-base-page.component';
 import { QueryEjecutablePageComponent } from './ui/base/query-ejecutable-page/query-ejecutable-page.component';
+import { WikiSqlComponent } from './component/modal/wiki-sql/wiki-sql.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { QueryEjecutablePageComponent } from './ui/base/query-ejecutable-page/qu
     ComponentMainComponent,
     PermisosUsuariosComponent,
     ActionDataBasePageComponent,
-    QueryEjecutablePageComponent
+    QueryEjecutablePageComponent,
+    WikiSqlComponent
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule,CodemirrorModule],
   providers: [

@@ -59,7 +59,7 @@
         </div>
       </li>
 
-      <li class="nav-item" *ngIf="this.username == 'root'">
+      <li class="nav-item" *ngIf="isValidUserList()">
         <div class="dropdown dropstart">
           <a class="nav-link" [routerLink]="['/users']">
             <div class="ajustCenter">

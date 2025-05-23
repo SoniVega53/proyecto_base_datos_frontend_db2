@@ -47,19 +47,19 @@ export class ControlDatabaseService extends BaseApiService {
   }
 
 
-  ejecutarQuery(query: any,nameDataBase:any) {
-    const body = { query: query,nameDataBase: nameDataBase};
+  ejecutarQuery(query: any,nameDataBase:any,transaction:boolean = false) {
+    const body = { query: query,nameDataBase: nameDataBase,transaction:transaction};
     return this.postServiceBody(`ejecutarQuery`, {}, body);
   }
-  ejecutarQueryMain(nombre_schema: any,create:boolean) {
-    const body = {query:''};
+  ejecutarQueryMain(nombre_schema: any,create:boolean,transaction:boolean = false) {
+    const body = {query:'',transaction:transaction};
     body.query = create ? `CREATE DATABASE ${nombre_schema}` : `DROP DATABASE ${nombre_schema}`;
 
     return this.postServiceBody(`ejecutarQueryMain`, {}, body);
   }
 
-  ejecutarQueryAll(query: any) {
-    const body = {query:query};
+  ejecutarQueryAll(query: any,transaction:boolean = false) {
+    const body = {query:query,transaction:transaction};
     return this.postServiceBody(`ejecutarQueryMain`, {}, body);
   }
 
